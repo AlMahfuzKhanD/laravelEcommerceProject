@@ -17,6 +17,8 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         parent::boot();
+        $this->loadRoutesFrom(module_path('Auth', '/Routes/web.php'));
+        $this->loadViewsFrom(module_path('Auth', 'Resources/views'), 'auth');
     }
 
     /**

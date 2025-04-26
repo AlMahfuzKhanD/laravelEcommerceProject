@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Auth\Http\Controllers\AuthController;
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('auth', AuthController::class)->names('auth');
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
 });
+
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
