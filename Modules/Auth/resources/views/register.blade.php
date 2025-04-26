@@ -5,7 +5,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <form class="md-float-material form-material">
+                <form class="md-float-material form-material" method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="text-center">
                         <img src="..\files\assets\images\logo.png" alt="logo.png">
                     </div>
@@ -17,7 +18,11 @@
                                 </div>
                             </div>
                             <div class="form-group form-primary">
-                                <input type="text" name="user-name" class="form-control" required="" placeholder="Choose Username">
+                                <input type="text" name="name" class="form-control" required="" placeholder="Choose Name">
+                                <span class="form-bar"></span>
+                            </div>
+                            <div class="form-group form-primary">
+                                <input type="text" name="user_name" class="form-control" required="" placeholder="Choose Username">
                                 <span class="form-bar"></span>
                             </div>
                             <div class="form-group form-primary">
@@ -33,12 +38,12 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-primary">
-                                        <input type="password" name="confirm-password" class="form-control" required="" placeholder="Confirm Password">
+                                        <input type="password" name="password_confirmation" class="form-control" required="" placeholder="Confirm Password">
                                         <span class="form-bar"></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row m-t-25 text-left">
+                            {{-- <div class="row m-t-25 text-left">
                                 <div class="col-md-12">
                                     <div class="checkbox-fade fade-in-primary">
                                         <label>
@@ -57,10 +62,10 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row m-t-30">
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now</button>
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now</button>
                                 </div>
                             </div>
                             <hr>
