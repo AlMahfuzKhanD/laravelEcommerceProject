@@ -37,7 +37,7 @@ class AuthController extends Controller
                     'alert-type' => 'Success'
                 );
 
-                return redirect()->intended('posts')->with($notification);
+                return redirect()->intended('/dashboard')->with($notification);
             }else{
                 $notification = array(
                     'message' => 'Incorrect Credentials ',
