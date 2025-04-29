@@ -7,7 +7,8 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     
-                        <form class="md-float-material form-material">
+                        <form class="md-float-material form-material" method="POST" action="{{ route('login') }}">
+                            @csrf
                             <div class="text-center">
                                 <img src="..\files\assets\images\logo.png" alt="logo.png">
                             </div>

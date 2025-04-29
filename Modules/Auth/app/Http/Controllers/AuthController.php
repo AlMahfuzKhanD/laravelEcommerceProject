@@ -19,36 +19,72 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        try {
+            // input validation 
+            $credentials = $request->validate([
+                'email' => ['required','email'],
+                'password' => ['required']
+            ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            $email = $request->email;
+            $password = $request->password;
+
+            if(Auth::attempt(['email' => $email, 'password' => $password])){
+                $request->session()->regenerate();
+
+                $notification = array(
+                    'message' => 'Login Successful!',
+                    'alert-type' => 'Success'
+                );
+
+                return redirect()->intended('posts')->with($notification);
+            }else{
+                $notification = array(
+                    'message' => 'Incorrect Credentials ',
+                    'alert-type' => 'error'
+                );
+                return redirect()->route('login')->with($notification);
+            }
+
+
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+                $message = $e->getMessage();
+                $notification = array(
+                    'message' => $message,
+                    'alert-type' => 'error'
+                );
+            return redirect()->back()->with($notification);
         }
-
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
     }
 
     public function register(Request $request) {
-        $request->validate([
-            'name' => ['required'],
-            'user_name' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed', 'min:6'],
-        ]);
-        $user = User::create([
-            'name' => $request->name,
-            'username' => $request->user_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-        Auth::login($user);
-        return redirect('/dashboard');
+        try {
+            // input validation 
+            $request->validate([
+                'name' => ['required'],
+                'user_name' => ['required'],
+                'email' => ['required', 'email', 'unique:users,email'],
+                'password' => ['required', 'confirmed', 'min:6'],
+            ]);
+            $user = User::create([
+                'name' => $request->name,
+                'username' => $request->user_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+            Auth::login($user);
+            return redirect('/dashboard');
+
+
+        } catch (\Exception $e) {
+                $message = $e->getMessage();
+                $notification = array(
+                    'message' => $message,
+                    'alert-type' => 'error'
+                );
+            return redirect()->back()->with($notification);
+        }
     }
 
     public function logout(Request $request) {
