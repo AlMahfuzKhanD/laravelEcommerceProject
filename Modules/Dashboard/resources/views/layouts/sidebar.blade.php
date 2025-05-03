@@ -5,23 +5,17 @@
             <li class="pcoded-hasmenu active pcoded-trigger">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                    <span class="pcoded-mtext">Dashboard</span>
+                    <span class="pcoded-mtext">Category</span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="active">
                         <a href="index-1.htm">
-                            <span class="pcoded-mtext">Default</span>
+                            <span class="pcoded-mtext">Create Category</span>
                         </a>
                     </li>
                     <li class="">
                         <a href="dashboard-crm.htm">
-                            <span class="pcoded-mtext">CRM</span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="dashboard-analytics.htm">
-                            <span class="pcoded-mtext">Analytics</span>
-                            <span class="pcoded-badge label label-info ">NEW</span>
+                            <span class="pcoded-mtext">Category List</span>
                         </a>
                     </li>
                 </ul>
