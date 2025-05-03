@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('dashboard::layouts.app')
 @section('content')
 <div class="pcoded-inner-content">
     <div class="main-body">

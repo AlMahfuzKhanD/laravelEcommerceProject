@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('backend.layouts.header')
+@include('dashboard::layouts.header')
 
 <body>
     <!-- Pre-loader start -->
-    @include('backend.layouts.preloader')
+    @include('dashboard::layouts.preloader')
     <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
 
             <!-- Nav Start -->
-            @include('backend.layouts.nav')
+            @include('dashboard::layouts.nav')
             <!-- Nav End -->
 
             <!-- Sidebar chat start -->
-            @include('backend.layouts.sidebar_chat')
+            @include('dashboard::layouts.sidebar_chat')
             <!-- Sidebar inner chat start-->
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
                     <!-- Sidebar starts -->
-                    @include('backend.layouts.sidebar')
+                    @include('dashboard::layouts.sidebar')
                     <!-- Sidebar end -->
                     <div class="pcoded-content">
                         @yield('content')
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    @include('backend.layouts.footer')
+    @include('dashboard::layouts.footer')
 </body>
 
 </html>
